@@ -66,6 +66,11 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.2.0.tgz#f3933a44e365864f4dad5db94158106d511e8131"
   integrity sha512-sqKVVVOe5ivCaXDWivIJYVSaEgdQK9ul7a4Kity5Iw7u9+wBAPbX1RMSnLLmp7O4Vzj0WOWwMAJsTL00xwaNug==
 
+"@heroicons/react@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@heroicons/react/-/react-1.0.1.tgz#66d25f6441920bd5c2146ea27fd33995885452dd"
+  integrity sha512-uikw2gKCmqnvjVxitecWfFLMOKyL9BTFcU4VM3hHj9OMwpkCr5Ke+MRMyY2/aQVmsYs4VTq7NCFX05MYwAHi3g==
+
 "@next/env@10.2.3":
   version "10.2.3"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-10.2.3.tgz#ede3bbe68cec9939c37168ea2077f9adbc68334e"
@@ -1845,6 +1850,13 @@ react-refresh@0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
+react-text-selection-popover@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-text-selection-popover/-/react-text-selection-popover-2.0.1.tgz#a02f931aaf5843fdfe3513ff02fc3d3d770c614b"
+  integrity sha512-8G2ocUHqDRonHKow58oh+HVf8p4FGn67elFPwke/C0sNSfQhgy12VaSDBmLEAwPW2n7T5+MupmpG4SJkz6qpDA==
+  dependencies:
+    use-text-selection "^1.1.3"
+
 react@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
@@ -2269,6 +2281,11 @@ use-subscription@1.5.1:
   integrity sha512-Xv2a1P/yReAjAbhylMfFplFKj9GssgTwN7RlcTxBujFQcloStWNDQdc4g4NRWH9xS4i/FDk04vQBptAXoF3VcA==
   dependencies:
     object-assign "^4.1.1"
+
+use-text-selection@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/use-text-selection/-/use-text-selection-1.1.3.tgz#c8f756cda69d8ff017da0990bbd1c7fe8819aff0"
+  integrity sha512-pu75m3eyk/ZbJlUw7tsgvxXgNEwMEL+n0YDGsW5Y/N7VNkMqhZlvw7yrOAoeUZHxVaxRo3k7zrMAFm2KUMfq6A==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
