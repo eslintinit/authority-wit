@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { ToastContext } from '../context'
 import { Popover } from 'react-text-selection-popover'
 import { ChevronRightIcon } from '@heroicons/react/solid'
 import {
@@ -68,36 +69,61 @@ const Popup = ({ style }) => {
 }
 
 // props: label, ?icon, ?triggerSecondaryMenu, ?showSecondaryMenu, ?setShowSecondaryMenu, ?active
-const MenuItem = (props) => (
-  <li>
-    <a
-      className={`group flex items-center justify-between px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer active:bg-green-500 ${
-        props.active ? 'bg-gray-100 text-gray-900' : ''
-      }`}
+const MenuItem = (props) => {
+  const { triggerToast } = useContext(ToastContext)
+
+  return (
+    <li
       onClick={() => {
-        if (props.triggerSecondaryMenu) {
-          props.setShowSecondaryMenu(!props.showSecondaryMenu)
+        if (!props.triggerSecondaryMenu) {
+          triggerToast(props.label)
+          // alert(props.label)
+
+          // Clear selection to hide popup
+          if (window.getSelection) {
+            if (window.getSelection().empty) {
+              // Chrome
+              window.getSelection().empty()
+            } else if (window.getSelection().removeAllRanges) {
+              // Firefox
+              window.getSelection().removeAllRanges()
+            }
+          } else if (document.selection) {
+            // IE?
+            document.selection.empty()
+          }
         }
       }}
     >
-      <div className="flex items-center">
-        {props.icon && (
-          <props.icon
-            className={`mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500 ${
-              props.active ? 'text-gray-500' : ''
+      <a
+        className={`group flex items-center justify-between px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer active:bg-green-500 ${
+          props.active ? 'bg-gray-100 text-gray-900' : ''
+        }`}
+        onClick={() => {
+          if (props.triggerSecondaryMenu) {
+            props.setShowSecondaryMenu(!props.showSecondaryMenu)
+          }
+        }}
+      >
+        <div className="flex items-center">
+          {props.icon && (
+            <props.icon
+              className={`mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500 ${
+                props.active ? 'text-gray-500' : ''
+              }`}
+              aria-hidden="true"
+            />
+          )}
+          {props.label}
+        </div>
+        {props.triggerSecondaryMenu && (
+          <ChevronRightIcon
+            className={`h-5 w-5 text-gray-400 group-hover:text-blue-500 ${
+              props.active ? 'text-blue-500' : ''
             }`}
-            aria-hidden="true"
           />
         )}
-        {props.label}
-      </div>
-      {props.triggerSecondaryMenu && (
-        <ChevronRightIcon
-          className={`h-5 w-5 text-gray-400 group-hover:text-blue-500 ${
-            props.active ? 'text-blue-500' : ''
-          }`}
-        />
-      )}
-    </a>
-  </li>
-)
+      </a>
+    </li>
+  )
+}

@@ -1,12 +1,17 @@
+import { useContext } from 'react'
+import { ToastContext } from '../context'
 import dynamic from 'next/dynamic'
+import Toast from '../components/toast'
 
 // we render popover only client-side as it relies on "document" object
 const Popover = dynamic(() => import('../components/popover'), { ssr: false })
 
 export default function Home() {
   return (
-    <div className="max-w-3xl text-md text-gray-800 p-8">
+    <div className="max-w-3xl text-md text-gray-800 p-16 px-20 relative flex flex-col">
       <Popover />
+      <Toast />
+      <h1 className="text-xl font-bold mb-6">Case summary</h1>
       <p>
         Our API provides a general-purpose “text in, text out” interface, which
         makes it possible to apply it to virtually any language task. This is
